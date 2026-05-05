@@ -122,3 +122,11 @@ Shop exposes Next.js API routes under `/api/*` with permissive CORS so Flag Mana
 | `NEXT_PUBLIC_FLAG_MANAGER_ORIGIN` | shop, flag-manager | Module Federation remote; `ApiFlagProvider` base URL |
 
 Use full origins with scheme (`https://...`), no trailing slash.
+
+## Troubleshooting
+
+### `TypeError: _resolveContext_stack.delete is not a function`
+
+Next.js 14’s webpack plugin `OptionalPeerDependencyResolverPlugin` calls `.delete()` on `resolveContext.stack`, which must be a real `Set`. **`enhanced-resolve` 5.21+** switched the resolver stack to a `StackEntry` linked list that does not implement `.delete`, so webpack can throw this during `next build` (often on Vercel if the lockfile resolves `enhanced-resolve` to 5.21.x).
+
+This repo pins **enhanced-resolve** to **5.20.1** via root `package.json` `overrides`, a direct dependency on both Next apps, and per-app `overrides` so installs still work if Vercel treats a single app directory as the install root. **Commit `package-lock.json`** and use **`npm ci`** on CI/Vercel so the lockfile is honored. After changing overrides, regenerate the lockfile (`rm package-lock.json && npm install`) if `npm ls enhanced-resolve` still shows 5.21.x.

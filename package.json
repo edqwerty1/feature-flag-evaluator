@@ -1,0 +1,18 @@
+{
+  "name": "experian-test",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w apps/shop\" \"npm run dev -w apps/flag-manager\"",
+    "dev:shop": "npm run dev -w apps/shop",
+    "dev:flag-manager": "npm run dev -w apps/flag-manager"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "overrides": {
+    "enhanced-resolve": "5.20.1"
+  }
+}

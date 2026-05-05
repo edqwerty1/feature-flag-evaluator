@@ -15,7 +15,8 @@
     "next": "14.2.25",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "webpack": "5.105.3"
+    "webpack": "5.105.3",
+    "enhanced-resolve": "5.20.1"
   },
   "devDependencies": {
     "@stylexjs/babel-plugin": "^0.13.0",
@@ -26,6 +27,6 @@
     "typescript": "^5.8.0"
   },
   "overrides": {
-    "enhanced-resolve": "5.17.1"
+    "enhanced-resolve": "5.20.1"
   }
 }
