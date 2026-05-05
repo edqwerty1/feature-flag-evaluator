@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3001",
-    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
-    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true next start -p 3001"
+    "dev": "rimraf .next && cross-env NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3001",
+    "build": "cross-env NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "start": "cross-env NEXT_PRIVATE_LOCAL_WEBPACK=true next start -p 3001"
   },
   "dependencies": {
     "@babel/runtime": "^7.29.2",
@@ -23,7 +23,9 @@
     "@stylexjs/postcss-plugin": "^0.13.0",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.1"
   },
   "overrides": {
     "enhanced-resolve": "5.20.1"
